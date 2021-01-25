@@ -1,5 +1,6 @@
 const express = require('express');
-const Widgets = require('../../models/widgets');
+const Widgets = require('../models/widgets');
+const Auth = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -8,13 +9,20 @@ router.get('/', async (req, res) => {
   res.json(widgets);
 });
 
-router.get('/:id', async (req, res) => {
-  const widgets = await Widgets.find({ _id: req.params.id });
+router.get('/byUser', Auth.check, async (req, res) => {
+  const widgets = await Widgets.find({ author: req.user._id });
   res.json(widgets);
 });
 
-router.post('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
+  const widgets = await Widgets.findOne({ _id: req.params.id });
+  res.json(widgets);
+});
+
+router.post('/create', Auth.check, async (req, res) => {
+  req.body.author = req.user._id;
   const newWidget = await new Widgets(req.body).save();
+  console.log(newWidget);
   res.json(newWidget);
 });
 
