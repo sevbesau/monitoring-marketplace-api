@@ -15,7 +15,7 @@ router.get('/byUser', Auth.check, async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const widgets = await Widgets.findOne({ _id: req.params.id });
+  const widgets = await Widgets.findOne({ _id: req.params.id }).populate('author').exec();
   res.json(widgets);
 });
 

@@ -4,10 +4,11 @@ const path = require('path');
 const request = require('request');
 const fs = require('fs');
 
+const env = require('../env');
 
 const settings = {
-  cdn: '',
-  token: '',
+  cdn: env.cdnURL || '',
+  token: env.cdnToken || '',
 };
 
 const storage = multer.diskStorage({
