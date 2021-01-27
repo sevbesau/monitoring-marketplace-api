@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(morgan('tiny'));
 app.use(cors());
 
-app.use('/v1/widgets', require('./routes/widgets'));
+app.use('/v1/widgets', require('./routes/marketplace-widgets'));
 app.use('/v1/uploads', require('./routes/uploads'));
 app.use('/v1/users', require('./routes/users'));
 

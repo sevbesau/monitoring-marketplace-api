@@ -19,5 +19,5 @@ const Schema = new mongoose.Schema({
 });
 
 
-const Model = mongoose.model('widgets', Schema);
+const Model = mongoose.model('marketplace-widgets', Schema);
 module.exports = Model;

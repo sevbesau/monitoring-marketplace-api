@@ -1,5 +1,5 @@
 const express = require('express');
-const Widgets = require('../models/widgets');
+const Widgets = require('../models/marketplace-widgets');
 const Auth = require('../middleware/auth');
 
 const router = express.Router();
